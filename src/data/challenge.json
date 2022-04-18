@@ -1,0 +1,5 @@
+{
+  "title": "Example Title",
+  "description": "Given an array of example challenge questions, return an array of descriptions of these questions. 🥴",
+  "testcases": [{"input": true, "expectedOutput": "Populate testcases with objects for your testcases. Testcase objects should have an input property and an expectedOutput property."}]
+}
