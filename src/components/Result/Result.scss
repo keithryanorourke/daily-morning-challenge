@@ -1,0 +1,14 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/animations" as *;
+
+.result {
+  width: 100%;
+  animation: expand 0.5s cubic-bezier(.4,1.9,.83,.67);
+  border: 1px solid $primary1;
+  padding: 0.5rem;
+  &__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

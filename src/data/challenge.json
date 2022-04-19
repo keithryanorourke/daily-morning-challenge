@@ -1,5 +1,9 @@
 {
-  "title": "Example Title",
-  "description": "Given an array of example challenge questions, return an array of descriptions of these questions. 🥴",
-  "testcases": [{"input": true, "expectedOutput": "Populate testcases with objects for your testcases. Testcase objects should have an input property and an expectedOutput property."}]
+	"title": "Example Challenge: Sum Array",
+	"description": "Given an array of integers, write a function which returns the product of all the integers in the array",
+	"testcases": [
+		{ "input": [1, 2, 3], "expectedOutput": 6 },
+		{ "input": [0, 4, 6], "expectedOutput": 0 },
+		{ "input": [5, 6, 10, 0.5], "expectedOutput": 150 }
+	]
 }

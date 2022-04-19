@@ -1,0 +1,10 @@
+@use "../../styles/partials/colors" as *;
+
+.button {
+  outline: none;
+  border: 1px solid $primary1;
+  background: none;
+  padding: 1rem;
+  width: 50%;
+  font-size: inherit;
+}
