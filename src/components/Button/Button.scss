@@ -2,9 +2,11 @@
 
 .button {
   outline: none;
-  border: 1px solid $primary1;
+  color: inherit;
+  border: 1px solid $primary;
   background: none;
   padding: 1rem;
-  width: 50%;
-  font-size: inherit;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }

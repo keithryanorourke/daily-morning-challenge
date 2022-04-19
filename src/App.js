@@ -1,25 +1,49 @@
 import "./App.scss";
 import challenge from "./data/challenge.json";
-import Solution from "./components/Solution/Solution";
+import Solution from "./components/Solution/ButtonContainer";
+import Result from "./components/Result/Result";
 import {
 	solution1,
 	solution2,
 	solution3,
 } from "./solution-functions/solution-functions";
-
+import { useState } from "react";
+import ButtonContainer from "./components/Solution/ButtonContainer";
 
 function App() {
-  const solutionFunctions = [solution1, solution2, solution3];
+	const handleTestCases = (callback) => {
+    setResults([])
+    setTimeout(() => {
+
+      const resultsArr = challenge.testcases.map((testcase, index) => {
+        let result = JSON.stringify(callback(testcase.input));
+        let expected = JSON.stringify(testcase.expectedOutput);
+        return (
+          <Result
+					input={testcase.input}
+					expected={expected}
+					result={result}
+					passed={result === expected}
+					index={index}
+					key={index}
+          />
+          );
+        });
+        setResults(resultsArr);
+      }, 4)
+	};
+	const [results, setResults] = useState([]);
 	return (
-    <section className="challenge">
-      <h1 className="challenge__title">{challenge.title}</h1>
-      <p className="challenge__description">{challenge.description}</p>
-      <div className="challenge__container">
-        {solutionFunctions.map((solutionFunction, index) => {
-          return <Solution key={index} solutionNum={index} solutionFunction={solutionFunction} testcases={challenge.testcases} />;
-        })}
-      </div>
-    </section>
+		<section className="challenge">
+			<div className="challenge__animation-container">
+				<h1 className="challenge__title">{challenge.title}</h1>
+				<p className="challenge__description">
+					{challenge.description}
+				</p>
+				<ButtonContainer handler={handleTestCases} />
+				<div className="challenge__container">{results}</div>
+			</div>
+		</section>
 	);
 }
 

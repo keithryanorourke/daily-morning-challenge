@@ -2,13 +2,25 @@
 @use "../../styles/partials/animations" as *;
 
 .result {
-  width: 100%;
-  animation: expand 0.5s cubic-bezier(.4,1.9,.83,.67);
-  border: 1px solid $primary1;
-  padding: 0.5rem;
-  &__container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
+	width: 100%;
+	animation: expand 0.5s cubic-bezier(0.4, 1.9, 0.83, 0.67);
+	border: 1px solid $primary;
+	padding: 0.5rem;
+	font-size: 1.2rem;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+	flex-wrap: wrap;
+
+	@for $i from 1 through 10 {
+		&--#{$i} {
+			transform: scale(0);
+			animation: expand
+				forwards
+				0.25s
+				#{$i/10}s
+				cubic-bezier(0.4, 1.9, 0.83, 0.67);
+		}
+	}
 }
