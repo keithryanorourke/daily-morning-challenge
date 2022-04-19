@@ -1,7 +1,5 @@
 import "./ButtonContainer.scss";
 import Button from "../Button/Button";
-import Result from "../Result/Result";
-import { useState } from "react";
 import {
 	solution1,
 	solution2,
