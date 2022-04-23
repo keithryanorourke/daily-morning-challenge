@@ -9,7 +9,7 @@
 	padding: 2rem;
 	height: 100%;
 	color: $primary;
-	background-color: #00000033;
+	background-color: $overlay;
 
 	&__animation-container {
 		animation: popup 1s;
