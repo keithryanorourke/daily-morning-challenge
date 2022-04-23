@@ -1,12 +1,6 @@
 import "./App.scss";
 import challenge from "./data/challenge.json";
-import Solution from "./components/Solution/ButtonContainer";
 import Result from "./components/Result/Result";
-import {
-	solution1,
-	solution2,
-	solution3,
-} from "./solution-functions/solution-functions";
 import { useState } from "react";
 import ButtonContainer from "./components/Solution/ButtonContainer";
 
