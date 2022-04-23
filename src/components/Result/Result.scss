@@ -19,7 +19,7 @@
 			animation: expand
 				forwards
 				0.25s
-				#{$i/10}s
+				calc(#{$i}s / 10)
 				cubic-bezier(0.4, 1.9, 0.83, 0.67);
 		}
 	}
