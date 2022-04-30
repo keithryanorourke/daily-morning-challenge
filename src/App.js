@@ -6,25 +6,25 @@ import ButtonContainer from "./components/Solution/ButtonContainer";
 
 function App() {
 	const handleTestCases = (callback) => {
-    setResults([])
-    setTimeout(() => {
-
-      const resultsArr = challenge.testcases.map((testcase, index) => {
-        let result = JSON.stringify(callback(testcase.input));
-        let expected = JSON.stringify(testcase.expectedOutput);
-        return (
-          <Result
-					input={testcase.input}
-					expected={expected}
-					result={result}
-					passed={result === expected}
-					index={index}
-					key={index}
-          />
-          );
-        });
-        setResults(resultsArr);
-      }, 4)
+		setResults([]);
+		setTimeout(() => {
+			const resultsArr = challenge.testcases.map((testcase, index) => {
+				let result = challenge.hasMultipleArgs ? JSON.stringify(callback(...testcase.input)) : JSON.stringify(callback(testcase.input));
+				let expected = JSON.stringify(testcase.expectedOutput);
+				return (
+					<Result
+					hasMultipleArgs={challenge.hasMultipleArgs}
+						input={testcase.input}
+						expected={expected}
+						result={result}
+						passed={result === expected}
+						index={index}
+						key={index}
+					/>
+				);
+			});
+			setResults(resultsArr);
+		}, 4);
 	};
 	const [results, setResults] = useState([]);
 	return (
