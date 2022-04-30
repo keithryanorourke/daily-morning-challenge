@@ -5,15 +5,44 @@ import { useState } from "react";
 import ButtonContainer from "./components/Solution/ButtonContainer";
 
 function App() {
+	/**
+	 * This is super hacky but the purpose of this function is to avoid sending any direct references to solutions 
+	 * so that students cannot accidentally mutate object or array arguments.
+	 * @param {*} args
+	 * @param {boolean} hasMultipleArgs
+	 * @param {function} callback
+	 * @returns {string} result from callback
+	 */
+	const processResult = (args, hasMultipleArgs, callback) => {
+		const argsCopy = Array.isArray(args) ? [...args] : args;
+		if (hasMultipleArgs) {
+			/* Hey! I made this and I don't think it's great! 
+			If you can think of a cleaner way to do this while maintaining functionality and immutability PLEASE add your own changes! */
+			const immutableCopy = argsCopy.map((arg) => {
+				if (Array.isArray(arg)) return [...arg];
+				else if (typeof arg === 'object') return {...arg}
+				return arg;
+			});
+			return JSON.stringify(callback(...immutableCopy));
+		} else if (Array.isArray(argsCopy) || typeof arg === 'object') {
+			return JSON.stringify(callback(...argsCopy));
+		}
+		return JSON.stringify(callback(argsCopy));
+	};
+
 	const handleTestCases = (callback) => {
 		setResults([]);
 		setTimeout(() => {
 			const resultsArr = challenge.testcases.map((testcase, index) => {
-				let result = challenge.hasMultipleArgs ? JSON.stringify(callback(...testcase.input)) : JSON.stringify(callback(testcase.input));
+				let result = processResult(
+					testcase.input,
+					challenge.hasMultipleArgs,
+					callback
+				);
 				let expected = JSON.stringify(testcase.expectedOutput);
 				return (
 					<Result
-					hasMultipleArgs={challenge.hasMultipleArgs}
+						hasMultipleArgs={challenge.hasMultipleArgs}
 						input={testcase.input}
 						expected={expected}
 						result={result}

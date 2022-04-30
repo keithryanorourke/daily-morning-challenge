@@ -1,5 +1,6 @@
 const solution1 = (arr) => {
 	let product = 1;
+	arr.sort((a,b) => b-a);
 	arr.forEach((num) => (product *= num));
 	return product;
 };
