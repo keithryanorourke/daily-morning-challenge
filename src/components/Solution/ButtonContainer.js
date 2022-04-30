@@ -14,6 +14,7 @@ const ButtonContainer = ({ handler }) => {
 			{solutionFunctions.map((solutionFunction, index) => {
 				return (
 					<Button
+						key={index}
 						text={`Solution ${index + 1}`}
 						handler={handler}
 						callback={solutionFunction}

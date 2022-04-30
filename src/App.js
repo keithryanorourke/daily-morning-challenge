@@ -14,9 +14,9 @@ function App() {
 	 * @returns {string} result from callback
 	 */
 	const processResult = (args, hasMultipleArgs, callback) => {
-		const argsCopy = Array.isArray(args) ? [...args] : args;
+		const argsCopy = Array.isArray(args) ? [...args] : typeof args === 'object' ? {...args} : args;
 		if (hasMultipleArgs) {
-			/* Hey! I made this and I don't think it's great! 
+			/* Hey! I made this as a way to create copies of any object / array arguments and I don't think it's great! 
 			If you can think of a cleaner way to do this while maintaining functionality and immutability PLEASE add your own changes! */
 			const immutableCopy = argsCopy.map((arg) => {
 				if (Array.isArray(arg)) return [...arg];
@@ -24,9 +24,7 @@ function App() {
 				return arg;
 			});
 			return JSON.stringify(callback(...immutableCopy));
-		} else if (Array.isArray(argsCopy) || typeof arg === 'object') {
-			return JSON.stringify(callback(...argsCopy));
-		}
+		} 
 		return JSON.stringify(callback(argsCopy));
 	};
 
