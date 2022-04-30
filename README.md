@@ -2,7 +2,7 @@
 This repo is a template react project made to streamline the process of creating visuals for daily challenge takeup with students!
 
 ## Functional Setup
-In order to get this template up and running all you need to do is update the challenge.json with information about whichever whiteboarding challenge you are doing with students!
+In order to get this template up and running all you need to do is update the challenge.json file (found in data folder) with information about whichever whiteboarding challenge you are doing with students!
 
 ### JSON structure
 The challenge.json folder has 4 properties!
